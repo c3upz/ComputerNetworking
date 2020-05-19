@@ -1,0 +1,110 @@
+
+COEN146 Lab #2
+
+Name: Chris Gerbino
+Date: 4 / 10 / 20
+File description: This file has the answers to the questions in the lab document
+
+
+
+Step1: 
+    Lab2_ST.c
+
+Step2:
+
+    netstat: this command shows details about the computers network connections. It lists all
+    active TCP connections with the computer. It also shows IP addresses for the localhost and the IP
+    address for the other network device involved in the TCP connection
+
+    
+    ifconfig: used to configure or view the configuration of a network interface
+
+    hostname: returns the name of the local end-system / host
+
+    ping: is used to help check if there are errors delivering packets to a specified network device
+
+    traceroute: is a diagonstic tool that sends a packet to a foriegn end-system and keeps track of the time 
+    it takes for the packet to travel from network device to network device. (eg. router to router)
+
+    telnet: is a terminal emulation that allows users to connect to a remote device/host/end-system. This is 
+    often used to manage website files remotely
+
+    host/dig: this command performs a network DNS lookup
+
+    route: a tool that allows users to manage their computers OS routing table
+
+    arp: also know as 'Address Resolution Protocol' and its job is to map IP addresses to MAC addresses
+
+Step3: 
+
+    USA: washington.edu
+    EU: canterbury.ac.nz
+    Asia: www.useoul.edu
+
+    A/B.
+
+    Ping w/ 32 bytes
+    washington.edu = 0.0% packet loss, RTT round-trip min/avg/max/stddev = 29.865/32.127/40.532/2.888 ms; 
+    canterbury.ac.nz = 0% packet loss, RTT min/avg/max/stddev = 160.069/161.257/162.447/0.662 ms;
+    www.useoul.edu = 100% packet loss, the ping returned "Request timeout for icmp_seq #;
+
+    Ping w/ 1048 bytes
+    washington.edu = 0% loss, RTT min/avg/max/stddev = 31.591/35.412/45.230/4.319 ms; 
+    canterbury.ac.nz = 0% packet loss, RTT min/avg/max/stddev = 161.331/162.622/164.518/0.931 ms;
+    www.useoul.edu = 100% packet loss, the ping returned "Request timeout for icmp_seq #"; 
+
+    C.
+    The difference in the results for washington.edu and canterbury.ac.nz make sense as they are not close together. 
+    Washington.edu had the lowest times as we are geographically closest to them. I do not know the hosts from asia do not let me ping them.
+    I have tried pinging multiple asian hosts and the same thing occured.
+
+
+Step4: 
+    Lab2_2ST.c
+
+Step5: 
+
+    A. It says my computer is attempting to connect to the ip address 128.119.245.12, then it says that is is connected to 'gaia.cs.umass.edu'.
+    It also provides us with an escape character. After a little while it says "connection closed by foreign host.
+
+    B. When I execute the GET request it looks like the index.html page is returned. I just see a bunch of HTML tags
+
+    C. I think file is named index.php as that is the last item in the path we entered. The title of the page is 'Computer Network Research Group'. The client is running HTTP version 1.1
+
+
+Step6: 
+
+    A. Since my the host in asia has given me troubles I will be doing this with my USA host (washington.edu) and my EU host(canterbury.ac.nz)
+
+        washington.edu: 
+        
+        after entering "telnet washington.edu 80"
+
+        Trying 128.95.155.134...
+        Connected to washington.edu.
+        Escape character is '^]'.
+        HTTP/1.0 408 Request Time-out
+        Cache-Control: no-cache
+        Connection: close
+        Content-Type: text/html
+
+        <html><body><h1>408 Request Time-out</h1>
+        Your browser didn't send a complete request in time.
+        </body></html>
+        Connection closed by foreign host.
+
+
+
+        after entering "telnet washington.edu 3389"
+        
+        Trying 128.95.155.197...
+
+        No response output in terminal
+
+
+
+        canterbury.ac.nz:
+
+        Trying 132.181.106.1...
+        Connected to canterbury.ac.nz.
+        Escape character is '^]'.

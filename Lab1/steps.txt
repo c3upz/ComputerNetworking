@@ -1,0 +1,30 @@
+Name: Chris Gerbino
+Date: April 6th, 2020
+Title: Lab1 - COEN146L
+Description: This program quantitatively compares circuit switching and packet switching
+
+!NOTE steps 1.1 - 1.4 are the steps taken before we are requested to rewrite the program with two threads
+
+STEPS(1.1-1.4): Original Code
+    step1.1 - created file and copied the code that was given to us into the file
+    step1.2 - I compiled the program using "gcc Lab1_s1.c -o Lab1_s1" and no errors or 
+            warnings occured. I then made a copy of this file and called it "Lab1_s2"
+
+    step1.3 - I executed "Lab1_s2.c" by running ./Lab1_s2, this caused a segmentation fault
+    step1.4 - I executed the program by running "./Lab1_s2 500" and "./Lab1_s2 5000". When I 
+            ran "./Lab1_s2 500" the program executed much more quickly than when I ran "./Lab1_s2 5000". 
+            This makes sense as the higher the number the higher the delay.
+    step1.5 - I went back to the file named "Lab1_s1.c" to implement the changes nessesary to complete
+            step number 5
+
+Rewriting the code to use threads instead of processes
+
+STEPS (2.1-2.4): Code w/ Threads
+    step2.1 - rewrote the program so that it uses threads instead of processes
+    step2.2 - I compiled the program using "gcc Lab1_s1 -o Lab1_s1 -lpthread" and no errors occured.
+        However, I did get a warning that states "control reaches end of non-void function",
+        but the function its talking about is infact a void function. I do not believe I should be getting
+        this error.
+    step2.3 - When I executed the program I got a 'segmentation fault' which is the same as before.
+    step2.4 - When I excuted "./Lab1_s1 500" and "./Lab1_s1 5000" the same thing occured as before. 
+        Executing "./Lab1_s1 500" is faster than executing "./Lab1_s1 5000"
