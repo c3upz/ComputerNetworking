@@ -1,28 +1,23 @@
-/*
-* Name: Julia lieberman
-* Date: * Title: Lab5 - Stop N Wait Protocol - Header File
-* <Stop and wait protocol for an unreliable channel.>
-*/
-
 #ifndef liebermanlab5_h
 #define liebermanlab5_h
 
 //Header Struct
-typedef struct{
+typedef struct
+{
     int seq_ack;
     int len; //length of the data
     int cksum;
-}Header;
+} Header;
 
 //Packet Struct
-typedef struct{
+typedef struct
+{
     Header header;
     char data[10];
-}Packet;
+} Packet;
 
 int get_chksum(Packet);
 
-Packet make_packet(char[],int,int);
-
+Packet make_packet(char[], int, int);
 
 #endif
