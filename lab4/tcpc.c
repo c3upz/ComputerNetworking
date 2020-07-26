@@ -21,7 +21,7 @@ int sockfd, nr;
 FILE *fileToSend; //this is the file that we will send to the server
 
 //Declare sending and recieving buffers of size 1k bytes
-char sendBuf[1024], recBuf[1024];
+char sendBuf[10], recBuf[1024];
 
 //Declare server address to connect to
 struct sockaddr_in servAddr;
@@ -47,7 +47,7 @@ if (connect(sockfd, (struct sockaddr *)&servAddr, sizeof(struct sockaddr))){
     exit(1);
 }
 
-fileToSend = fopen("SherlockTestDoc.txt","r"); //later add if statement to catch error
+fileToSend = fopen("test.txt","r"); //later add if statement to catch error
 
 if(fileToSend == NULL){
     printf("Error opening file");

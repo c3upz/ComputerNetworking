@@ -1,5 +1,0 @@
-SHHHHHHHHERloCkkk HoLMES 123GET / HTTP/1.1
-Host: 10.0.0.136:5000
-Accept: */*
-Accept-Encoding: deflate, gzip
-

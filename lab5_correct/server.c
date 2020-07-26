@@ -153,10 +153,13 @@ int main(int argc, char *argv[]) {
     do {
 	//******STUDENT WORK******
         packet = ServerReceive(sockFileDescriptor, (struct sockaddr *)&clientaddr, &clientaddr_len, seqnum);
-        fwrite(packet.data, 1, ((int)(sizeof(packet.data))), filePointer);
-        printf("%d", (int)(sizeof(packet.data)));
         if (flag ==1)
-        {seqnum++;
+        {
+	//****[JAY]***moved these two lines under the if statement, you write only you send a good ACK	
+	fwrite(packet.data, 1, ((int)(strlen(packet.data))), filePointer);
+        printf("%d", (int)(sizeof(packet.data)));
+
+        seqnum++;
         seqnum = seqnum % 2;
         }
     } while (packet.header.len != 0);

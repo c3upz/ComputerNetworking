@@ -21,6 +21,7 @@
 
 // NOTE: beware of sign extension if the checksum is stored in a char, then converted to an int!
 int getChecksum(Packet packet) {
+//****[JAY]*** added the checksum curruption and moved seq number curruption from the main function to here
     packet.header.cksum = 0;
 
     int checksum = 0;
@@ -47,6 +48,23 @@ void logPacket(Packet packet) {
 
 void ClientSend(int sockfd, const struct sockaddr *address, socklen_t addrlen, Packet packet) {
     while (1) {
+
+	    int randomNum = rand()%10;
+    printf("random %d\n", randomNum);
+    if(randomNum <= 3){
+        packet.header.cksum = -10;
+    }else{
+        packet.header.cksum = getChecksum(packet);
+
+    }
+
+
+        randomNum = rand()%10;
+        if(randomNum <= 3){
+            packet.header.cksum = -20;
+        }else{
+            packet.header.cksum = getChecksum(packet);
+        }
 
         // send the packet
         printf("Sending packet\n");
@@ -138,12 +156,8 @@ int main(int argc, char *argv[]) {
         fread(packet.data, 1, ((int)(sizeof(packet.data))), filePointer);
         packet.header.seq_ack = seqnum;
         packet.header.len = strlen(packet.data);
-        int randomNum = rand()%10;
-        if(randomNum <= 3){
-            packet.header.cksum = -20;
-        }else{
-            packet.header.cksum = getChecksum(packet);
-        }
+
+
         ClientSend(sockFileDescriptor, (struct sockaddr *)&address, addrLen, packet);
         seqnum++;
         seqnum = (seqnum % 2); //will result in 1 or 0

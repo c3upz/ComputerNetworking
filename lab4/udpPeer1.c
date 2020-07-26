@@ -132,7 +132,7 @@ void retrieveDataFromPeer(){
   FILE *writeToFile;
   
   while ((numberOfRecBytes = recvfrom(sockFileDescriptor, recBuf, sizeof(recBuf), 0, (struct sockaddr*)&recAddr, &addrLen)) > 0){
-    writeToFile = fopen("CopiedFileServerUDP.txt", "w");
+    writeToFile = fopen("Demo4.txt", "w");
     if(writeToFile == NULL){
         printf("Could not open the file for global writing");
         exit(0);

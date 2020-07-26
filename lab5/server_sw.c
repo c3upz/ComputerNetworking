@@ -44,7 +44,14 @@ void ServerSend(int sockfd, const struct sockaddr *address, socklen_t addrlen, i
     	//******STUDENT WORK******
 	packet.header.seq_ack = seqnum;
     packet.header.len = sizeof(packet.data);
-    packet.header.cksum = getChecksum(packet);
+    // packet.header.cksum = getChecksum(packet);
+    int randomNum = rand()%10;
+    printf("random %d\n", randomNum);
+    if(randomNum <= 3){
+        packet.header.cksum = -10;
+    }else{
+        packet.header.cksum = getChecksum(packet);
+    }
     sendto(sockfd, &packet, sizeof(packet), 0, address, addrlen);
 
     printf("Sent ACK %d, checksum %d\n", (packet.header.seq_ack), (packet.header.cksum));

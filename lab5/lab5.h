@@ -1,6 +1,3 @@
-#define PBADCKSUM 5 
-
-
 typedef struct {
   int seq_ack;
   int len;

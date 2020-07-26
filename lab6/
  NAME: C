@@ -1,0 +1,16 @@
+hris Gerbino
+  TITLE: Lab6 - client
+  DESCRIPTION: This is program that implements rdt3.0 on top of UDP. This file contains the clientside code.
+
+
+#include <stdio.h>
+#include <netinet/in.h>
+#include <string.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include "lab6.h"
+#include <sys/socket.h>
+#include <sys/select.h>
+#include <sys/time.h>
+
+

@@ -130,7 +130,13 @@ int main(int argc, char *argv[]) {
         //printf("Client sending file contents to server...\n")
         packet.header.seq_ack = seqnum;
         packet.header.len = strlen(packet.data);
-        packet.header.cksum = getChecksum(packet);
+        // packet.header.cksum = getChecksum(packet);
+        int randomNum = rand()%10;    //this tests what happens if the incorrect checksum occurs
+        if(randomNum <= 3){
+            packet.header.cksum = -20;
+        }else{
+            packet.header.cksum = getChecksum(packet);
+        }
         ClientSend(sockFileDescriptor, (struct sockaddr *)&address, addrLen, packet);
         seqnum++;
         seqnum = (seqnum % 2);

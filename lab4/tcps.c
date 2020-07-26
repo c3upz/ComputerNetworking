@@ -95,7 +95,7 @@ void *start_routine(void *connectionFileDescriptor){
 
     while ((numberOfRecBytes = recv(fileDescriptor, recBuf, 1024, 0))>0){
 		//this is where i need to write to the file
-        writeToFile = fopen("CopiedFileServerTCP.txt", "a");
+        writeToFile = fopen("CopiedFileServerTCPtest.txt", "a");
         if(writeToFile == NULL){
             printf("Could not open the file for global writing");
             exit(0);
