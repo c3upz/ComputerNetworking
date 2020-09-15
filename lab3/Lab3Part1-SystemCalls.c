@@ -13,8 +13,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-int main() {
-    int readFile, writeFile; 
+int main()
+{
+    int readFile, writeFile;
 
     int fileType = 0;
     printf("Would you like to transfer a text file (1) or a binary file (2)?");
@@ -23,31 +24,37 @@ int main() {
     //opening .txt file if user selects '1'
     //opening .jpg file if user selects '2'
 
-    if(fileType == 1){
-        readFile = open("SherlockTestDoc.txt", O_RDONLY); 
+    if (fileType == 1)
+    {
+        readFile = open("SherlockTestDoc.txt", O_RDONLY);
         printf("\nFLAG");
-        if(readFile == -1){ //checking if file was opened sucessfully
+        if (readFile == -1)
+        { //checking if file was opened sucessfully
             printf("An error occured while opening this file");
             exit(0);
         }
         //now creating second file for the program to write to
         writeFile = open("duplicatedTextFile2.txt", O_CREAT | O_WRONLY, 0666);
-        if(writeFile == -1){
+        if (writeFile == -1)
+        {
             printf("\n Error opening writeFile");
             exit(0);
         }
+    }
+    else
+    {
+        readFile = open("TestImage.jpg", O_RDONLY);
+        //using 'rb' bc this file is a binary file
 
-    }else{
-        readFile = open("TestImage.jpg", O_RDONLY); 
-        //using 'rb' bc this file is a binary file 
-
-        if(readFile == -1){ //checking if file was opened sucessfully
+        if (readFile == -1)
+        { //checking if file was opened sucessfully
             printf("An error occured while opening this file");
             exit(0);
         }
         //now creating second file for the program to write to
         writeFile = open("duplicatedBinaryFile2.jpg", O_CREAT | O_WRONLY, 0666); // using 'wb' bc binary file
-        if(writeFile == -1){
+        if (writeFile == -1)
+        {
             printf("\n Error opening writeFile");
             exit(0);
         }
@@ -56,7 +63,8 @@ int main() {
     //now reading the file until EOF
     char buffer;
     int temp;
-    while(read(readFile, &buffer, 1) > 0){
+    while (read(readFile, &buffer, 1) > 0)
+    {
         write(writeFile, &buffer, 1);
         //I thought i would need the code below to check if there was an error... but it was the cause of my error
 
@@ -70,7 +78,6 @@ int main() {
     printf("\nFile should be copied");
     close(writeFile);
     close(readFile);
-
 
     return 0;
 }
